@@ -45,6 +45,9 @@ export const FileUpload = ({
   const { getRootProps, isDragActive } = useDropzone({
     multiple: false,
     noClick: true,
+    accept: {
+    "application/pdf": [".pdf"], // only allow PDFs
+  },
     onDrop: handleFileChange,
     onDropRejected: (error) => {
       console.log(error);
@@ -62,6 +65,7 @@ export const FileUpload = ({
           ref={fileInputRef}
           id="file-upload-handle"
           type="file"
+          accept="application/pdf"
           onChange={(e) => handleFileChange(Array.from(e.target.files || []))}
           className="hidden"
         />
